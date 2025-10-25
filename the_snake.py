@@ -43,7 +43,7 @@ class GameObject:
 
     def __init__(self):
         """Инициализирует позицию в центре экрана и цвет (не задан)."""
-        self.position = ((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))
+        self.position = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
         self.body_color = None
 
     def draw(self):
@@ -115,12 +115,12 @@ class Snake(GameObject):
             pygame.draw.rect(screen, self.body_color, rect)
             pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
 
-        # Отрисовка головы
+        # Отрисовка головы змейки
         head_rect = pygame.Rect(self.positions[0], (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(screen, self.body_color, head_rect)
         pygame.draw.rect(screen, BORDER_COLOR, head_rect, 1)
 
-        # Затирание хвоста
+        # Затирание последнего сегмента
         if self.last:
             last_rect = pygame.Rect(self.last, (GRID_SIZE, GRID_SIZE))
             pygame.draw.rect(screen, BOARD_BACKGROUND_COLOR, last_rect)
@@ -132,7 +132,7 @@ class Snake(GameObject):
     def reset(self):
         """Сбрасывает змейку в начальное состояние."""
         self.length = 1
-        self.positions = [((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))]
+        self.positions = [(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)]
         self.direction = RIGHT
         self.next_direction = None
         self.last = None
@@ -156,7 +156,7 @@ def handle_keys(game_object):
 
 
 def main():
-    """Основная функция игры."""
+    """Запускает основной цикл игры 'Змейка'."""
     pygame.init()
     snake = Snake()
     apple = Apple()
